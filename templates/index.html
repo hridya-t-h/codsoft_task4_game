@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div id="game-container">
+        <h1>Rock Paper Scissors</h1>
+
+        {% if rounds is none %}
+        <div id="round-popup" class="popup">
+            <h2>How many rounds?</h2>
+            <form action="{{ url_for('start_game') }}" method="post">
+                <input type="number" name="rounds" min="1" max="10" required>
+                <button type="submit">Start</button>
+            </form>
+        </div>
+        {% else %}
+        <div id="new-game-button">
+            <form action="{{ url_for('new_game') }}" method="post">
+                <button type="submit">New Game</button>
+            </form>
+        </div>
+        <div id="game-content">
+            <div id="choices">
+                <div id="user-side">
+                    <h2>Your Choice</h2>
+                    <form action="{{ url_for('play') }}" method="post">
+                        <div class="choice">
+                            <button type="submit" name="choice" value="rock">
+                                <img src="{{ url_for('static', filename='images/rock_left.jpg') }}" alt="Rock">
+                            </button>
+                            <p>Rock</p>
+                        </div>
+                        <div class="choice">
+                            <button type="submit" name="choice" value="paper">
+                                <img src="{{ url_for('static', filename='images/paper_left.jpg') }}" alt="Paper">
+                            </button>
+                            <p>Paper</p>
+                        </div>
+                        <div class="choice">
+                            <button type="submit" name="choice" value="scissors">
+                                <img src="{{ url_for('static', filename='images/scissors_left.jpg') }}" alt="Scissors">
+                            </button>
+                            <p>Scissors</p>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="vs">
+                    <h2>VS</h2>
+                </div>
+
+                <div id="computer-side">
+                    <h2>Computer's Choice</h2>
+                    {% if computer_choice == 'rock' %}
+                    <img id="computer-choice-img" src="{{ url_for('static', filename='images/rock_right.jpg') }}" alt="Rock">
+                    {% elif computer_choice == 'paper' %}
+                    <img id="computer-choice-img" src="{{ url_for('static', filename='images/paper_right.jpg') }}" alt="Paper">
+                    {% elif computer_choice == 'scissors' %}
+                    <img id="computer-choice-img" src="{{ url_for('static', filename='images/scissors_right.jpg') }}" alt="Scissors">
+                    {% else %}
+                    <img id="computer-choice-img" src="{{ url_for('static', filename='images/placeholder.jpg') }}" alt="No choice yet">
+                    {% endif %}
+                    <p>Computer chose: {{ computer_choice }}</p>
+                </div>
+            </div>
+
+            <div id="results">
+                <p id="round-result">Result: {{ result }}</p>
+            </div>
+
+            <div id="scoreboard">
+                <p id="user-score">User: {{ user_score }}</p>
+                <p id="computer-score">Computer: {{ computer_score }}</p>
+            </div>
+
+            {% if rounds == 0 %}
+            <div id="final-result">
+                <h2>Game Over!</h2>
+                <p>Final Result: {{ final_result }}</p>
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

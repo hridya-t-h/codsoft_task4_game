@@ -1,0 +1,182 @@
+body {
+    background-image: url('/static/images/background.jpg');
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+#game-container {
+    width: 1000px;
+    text-align: center;
+    background-color: hsla(48, 87%, 81%, 0.632);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    max-height: 90vh;
+}
+
+h1 {
+    color: #026475;
+    font-weight: bolder;
+}
+
+h2 {
+    color: #279804;
+}
+
+#scoreboard {
+    display:flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#scoreboard p {
+    font-weight: bolder;
+    font-size: 25px;
+    color: #ff0505;
+}
+
+#new-game-button {
+    text-align: right;
+}
+
+#new-game-button button {
+    padding: 5px 10px;
+    background-color: #c29f04;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#new-game-button button:hover {
+    background-color: #555;
+}
+
+#game-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#choices {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#user-side, #computer-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#user-side {
+    margin-right: 50px;
+}
+
+#computer-side {
+    margin-left: 50px;
+}
+
+.choice {
+    margin: 10px;
+}
+
+.choice button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.choice img {
+    width: 100px;
+    height: 100px;
+    transition: transform 0.3s;
+}
+
+.choice img:hover {
+    transform: scale(1.1);
+}
+
+#vs {
+    font-size: 24px;
+    margin: 0 30px;
+}
+
+#animation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#animation div {
+    margin: 0 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#animation div.show {
+    opacity: 1;
+}
+
+#results {
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#final-result {
+    margin-top: 20px;
+}
+
+.popup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popup h2 {
+    margin-bottom: 10px;
+}
+
+.popup form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popup input {
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.popup button {
+    padding: 5px 10px;
+    background-color: #f1a604;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.popup button:hover {
+    background-color: #21da4c;
+}
+
+button:focus {
+    outline: none;
+}
+
+button:active img {
+    transform: scale(0.95);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border: 2px solid #007bff;
+    border-radius: 10px;
+}
